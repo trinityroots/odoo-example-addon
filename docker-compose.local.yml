@@ -1,40 +1,41 @@
 version: '3.7'
 
 services:
-  test:
+  odoo:
     image: registry.3roots.live/odoo-root:14.0
-    user: root
     depends_on:
-      - test-db
+      - db
+    ports:
+      - 8200:8069
     networks:
-      - odoo-test-network
+      - odoo-network
     environment:
       - COMPOSE_CONVERT_WINDOWS_PATHS=1 # for windows
     volumes:
-      - ./odoo.local-test.conf:/etc/odoo/odoo.conf
+      - ./odoo.conf:/etc/odoo/odoo.conf
       - ./addons:/mnt/addons
     logging:
       options:
         max-size: 10m
-    command: test $OPTIONS
+    command: --dev=qweb,xml
     tty: true
 
-  test-db:
+  db:
     image: postgres:12
     networks:
-      - odoo-test-network
+      - odoo-network
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
     volumes:
-      - db-test-data:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
     logging:
       options:
         max-size: 10m
 
 networks:
-  odoo-test-network:
+  odoo-network:
 
 volumes:
-  db-test-data:
+  db-data:
