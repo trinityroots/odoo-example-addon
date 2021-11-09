@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   odoo:
-    image: registry.3roots.live/odoo-root:14.0
+    image: registry.3roots.live/odoo-root:15.0
     depends_on:
       - db
     ports:
