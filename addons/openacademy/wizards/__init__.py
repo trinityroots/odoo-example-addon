@@ -1,1 +1,1 @@
-from . import wizard
+from . import openacademy_wizard
