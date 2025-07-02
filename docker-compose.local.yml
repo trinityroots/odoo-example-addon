@@ -2,11 +2,11 @@ version: '3.7'
 
 services:
   odoo:
-    image: registry.3roots.live/odoo-root:18.0
+    image: odoo:18.0
     depends_on:
       - db
     ports:
-      - 8200:8069
+      - 8069:8069
     networks:
       - odoo-network
     environment:
