@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   test:
-    image: registry.3roots.live/odoo-root:14.0
+    image: registry.3roots.live/odoo-root:18.0
     user: root
     depends_on:
       - test-db
@@ -20,7 +20,7 @@ services:
     tty: true
 
   test-db:
-    image: postgres:12
+    image: postgres:16
     networks:
       - odoo-test-network
     environment:

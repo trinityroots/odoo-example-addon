@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   odoo:
-    image: registry.3roots.live/odoo-root:15.0
+    image: registry.3roots.live/odoo-root:18.0
     depends_on:
       - db
     ports:
@@ -21,7 +21,7 @@ services:
     tty: true
 
   db:
-    image: postgres:12
+    image: postgres:16
     networks:
       - odoo-network
     environment:
